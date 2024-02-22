@@ -21,7 +21,6 @@
 		EAAD68AB2B806B200062E0A3 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EAAD68AD2B806B200062E0A3 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		EAAD68AF2B806B200062E0A3 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
-		EAAD68B12B806B200062E0A3 /* ShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		EAAD68B22B806B230062E0A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAAD68B52B806B230062E0A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EAAD68B72B806B230062E0A3 /* SpaceInvaders.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpaceInvaders.entitlements; sourceTree = "<group>"; };
@@ -61,7 +60,6 @@
 				EAAD68AB2B806B200062E0A3 /* GameViewController.swift */,
 				EAAD68AD2B806B200062E0A3 /* Renderer.swift */,
 				EAAD68AF2B806B200062E0A3 /* Shaders.metal */,
-				EAAD68B12B806B200062E0A3 /* ShaderTypes.h */,
 				EAAD68B22B806B230062E0A3 /* Assets.xcassets */,
 				EAAD68B42B806B230062E0A3 /* Main.storyboard */,
 				EAAD68B72B806B230062E0A3 /* SpaceInvaders.entitlements */,
@@ -301,7 +299,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.enigmaticbits.SpaceInvaders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(TARGET_NAME)/ShaderTypes.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -329,7 +327,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.enigmaticbits.SpaceInvaders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(TARGET_NAME)/ShaderTypes.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
