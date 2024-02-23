@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA772F7D2B8700D300648523 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F7C2B8700D300648523 /* Scene.swift */; };
+		EA772F7F2B8700EF00648523 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F7E2B8700EF00648523 /* Node.swift */; };
+		EA772F822B87095400648523 /* SceneOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F812B87095400648523 /* SceneOne.swift */; };
+		EA772F842B8709C800648523 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F832B8709C800648523 /* Model.swift */; };
 		EAAD68AA2B806B200062E0A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD68A92B806B200062E0A3 /* AppDelegate.swift */; };
 		EAAD68AC2B806B200062E0A3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD68AB2B806B200062E0A3 /* GameViewController.swift */; };
 		EAAD68AE2B806B200062E0A3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD68AD2B806B200062E0A3 /* Renderer.swift */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA772F7C2B8700D300648523 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		EA772F7E2B8700EF00648523 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		EA772F812B87095400648523 /* SceneOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneOne.swift; sourceTree = "<group>"; };
+		EA772F832B8709C800648523 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EAAD68A62B806B200062E0A3 /* SpaceInvaders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceInvaders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAAD68A92B806B200062E0A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAAD68AB2B806B200062E0A3 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA772F802B87094400648523 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				EA772F812B87095400648523 /* SceneOne.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		EAAD689D2B806B200062E0A3 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +79,10 @@
 				EAAD68B22B806B230062E0A3 /* Assets.xcassets */,
 				EAAD68B42B806B230062E0A3 /* Main.storyboard */,
 				EAAD68B72B806B230062E0A3 /* SpaceInvaders.entitlements */,
+				EA772F7C2B8700D300648523 /* Scene.swift */,
+				EA772F7E2B8700EF00648523 /* Node.swift */,
+				EA772F832B8709C800648523 /* Model.swift */,
+				EA772F802B87094400648523 /* Scenes */,
 			);
 			path = SpaceInvaders;
 			sourceTree = "<group>";
@@ -139,8 +159,12 @@
 			files = (
 				EAAD68B02B806B200062E0A3 /* Shaders.metal in Sources */,
 				EAAD68AC2B806B200062E0A3 /* GameViewController.swift in Sources */,
+				EA772F822B87095400648523 /* SceneOne.swift in Sources */,
+				EA772F7D2B8700D300648523 /* Scene.swift in Sources */,
+				EA772F7F2B8700EF00648523 /* Node.swift in Sources */,
 				EAAD68AE2B806B200062E0A3 /* Renderer.swift in Sources */,
 				EAAD68AA2B806B200062E0A3 /* AppDelegate.swift in Sources */,
+				EA772F842B8709C800648523 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

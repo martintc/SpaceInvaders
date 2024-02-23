@@ -24,10 +24,7 @@ class Renderer: NSObject, MTKViewDelegate {
     var commandQueque: MTLCommandQueue
     var vertexDescriptor: MTLVertexDescriptor
     
-    // test bits
-    var triangleBuffer: MTLBuffer
-    var indexBuffer: MTLBuffer
-    var texture: MTLTexture
+    var scene: SceneOne
 
     init?(metalKitView: MTKView) {
         self.view = metalKitView
@@ -48,36 +45,7 @@ class Renderer: NSObject, MTKViewDelegate {
         
         self.renderPipelineState = Renderer.buildRenderPipelineState(self.view, device: self.device, vertexDescriptor: self.vertexDescriptor)
         
-        let verticies = [
-            Vertex(position: simd_float3(-0.5, -0.5, 0), texCoord: simd_float3(0, 1, 0)),
-            Vertex(position: simd_float3(-0.5, 0.5, 0), texCoord: simd_float3(0, 0, 0)),
-            Vertex(position: simd_float3(0.5, 0.5, 0), texCoord: simd_float3(1, 0, 0)),
-            Vertex(position: simd_float3(0.5, -0.5, 0), texCoord: simd_float3(1, 1, 0))
-        ]
-        
-        let indicies: [ushort] = [
-            0, 1, 2,
-            2, 3, 0
-        ]
-        
-        triangleBuffer = device.makeBuffer(bytes: verticies,
-                                           length: MemoryLayout.stride(ofValue: verticies[0]) * verticies.count,
-                                           options: MTLResourceOptions.storageModeShared)!
-        
-        indexBuffer = device.makeBuffer(bytes: indicies,
-                                        length: MemoryLayout.stride(ofValue: indicies[0]) * indicies.count,
-                                        options: MTLResourceOptions.storageModeShared)!
-        
-        let textureLoader = MTKTextureLoader(device: self.device)
-        
-        do {
-            self.texture = try textureLoader.newTexture(name: "player",
-                                                    scaleFactor: 1.0,
-                                                    bundle: Bundle.main,
-                                                    options: [MTKTextureLoader.Option.textureStorageMode : 0])
-        } catch {
-            fatalError("Error when Loading Texture: \(error)")
-        }
+        self.scene = SceneOne(device: self.device)
         
         super.init()
     }
@@ -139,19 +107,57 @@ class Renderer: NSObject, MTKViewDelegate {
         
         renderEncoder.setRenderPipelineState(self.renderPipelineState)
         
-        renderEncoder.setVertexBuffer(self.triangleBuffer, offset: 0, index: 30)
+//        renderEncoder.setVertexBuffer(self.triangleBuffer, offset: 0, index: 30)
+//        
+//        renderEncoder.setFragmentTexture(self.texture, index: 0)
+//        
+//        renderEncoder.drawIndexedPrimitives(type: .triangle,
+//                                            indexCount: indexBuffer.length / MemoryLayout<UInt16>.size,
+//                                            indexType: .uint16,
+//                                            indexBuffer: self.indexBuffer,
+//                                            indexBufferOffset: 0)
         
-        renderEncoder.setFragmentTexture(self.texture, index: 0)
-        
-        renderEncoder.drawIndexedPrimitives(type: .triangle,
-                                            indexCount: indexBuffer.length / MemoryLayout<UInt16>.size,
-                                            indexType: .uint16,
-                                            indexBuffer: self.indexBuffer,
-                                            indexBufferOffset: 0)
+        drawScene(self.scene, renderEncoder: renderEncoder)
         
         renderEncoder.endEncoding()
         commandBuffer.present(drawable)
         commandBuffer.commit()
+    }
+    
+    func drawScene(_ scene: Scene, renderEncoder: MTLRenderCommandEncoder) {
+        drawNodeRecursive(scene.rootNode, renderEncoder: renderEncoder, models: scene.models, textures: scene.textures)
+    }
+    
+    func drawNodeRecursive(_ node: Node, renderEncoder: MTLRenderCommandEncoder, models: [String: Model], textures: [String: MTLTexture]) {
+        if node.isVisible && !node.modelName.isEmpty && !node.textureName.isEmpty {
+            guard let model = models[node.modelName] else {
+                fatalError("Error: model \(node.modelName) was expected to be present.")
+            }
+            
+            guard let texture = textures[node.textureName] else {
+                fatalError("Error: texture \(node.textureName) was expected was expected to be present.")
+            }
+            
+            renderEncoder.setVertexBuffer(model.vertexBuffer,
+                                          offset: 0,
+                                          index: 30)
+            
+            renderEncoder.setFragmentTexture(texture,
+                                             index: 0)
+            
+            renderEncoder.drawIndexedPrimitives(type: .triangle,
+                                                indexCount: model.indexBuffer.length / MemoryLayout<UInt16>.size,
+                                                indexType: .uint16,
+                                                indexBuffer: model.indexBuffer,
+                                                indexBufferOffset: 0)
+        }
+        
+        for child in node.children {
+            drawNodeRecursive(child,
+                              renderEncoder: renderEncoder,
+                              models: models,
+                              textures: textures)
+        }
     }
 
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
