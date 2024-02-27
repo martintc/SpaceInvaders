@@ -14,9 +14,9 @@
             filePath = "SpaceInvaders/Renderer.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "drawNodeRecursive(_:renderEncoder:models:textures:)"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "drawNodeRecursive(_:renderEncoder:models:textures:camera:)"
             landmarkType = "7">
             <Locations>
                <Location

@@ -16,6 +16,11 @@ struct Vertex {
     var texCoord: simd_float3 // (r, b, g)
 }
 
+struct VertexUniforms {
+    var viewProjectionMatrix: simd_float4x4
+    var modelMatrix: simd_float4x4
+}
+
 class Renderer: NSObject, MTKViewDelegate {
 
     public let device: MTLDevice
@@ -64,7 +69,6 @@ class Renderer: NSObject, MTKViewDelegate {
         vertexDescriptor.attributes[1].format = .float3
         vertexDescriptor.attributes[1].bufferIndex = 30
         vertexDescriptor.attributes[1].offset = MemoryLayout.offset(of: \Vertex.texCoord)!
-
         
         return vertexDescriptor
     }
@@ -87,8 +91,20 @@ class Renderer: NSObject, MTKViewDelegate {
             fatalError("Error: \(error)")
         }
     }
+    
+    func update() {
+        let projectionMatrix = matrix_perspective_right_hand(fovyRadians: .pi / 6,
+                                                                      aspectRatio: getAspectRatio(view: self.view),
+                                                                      nearZ: 0.1,
+                                                                      farZ: 100)
+        let viewMatrix = self.scene.camera.getModelMatrix()
+        
+        self.scene.camera.modelMatrix = projectionMatrix * viewMatrix
+    }
 
     func draw(in view: MTKView) {
+        update()
+        
         guard let drawable = self.view.currentDrawable else {
             fatalError("Error: could not get drawable")
         }
@@ -107,28 +123,18 @@ class Renderer: NSObject, MTKViewDelegate {
         
         renderEncoder.setRenderPipelineState(self.renderPipelineState)
         
-//        renderEncoder.setVertexBuffer(self.triangleBuffer, offset: 0, index: 30)
-//        
-//        renderEncoder.setFragmentTexture(self.texture, index: 0)
-//        
-//        renderEncoder.drawIndexedPrimitives(type: .triangle,
-//                                            indexCount: indexBuffer.length / MemoryLayout<UInt16>.size,
-//                                            indexType: .uint16,
-//                                            indexBuffer: self.indexBuffer,
-//                                            indexBufferOffset: 0)
-        
-        drawScene(self.scene, renderEncoder: renderEncoder)
+        drawScene(renderEncoder: renderEncoder)
         
         renderEncoder.endEncoding()
         commandBuffer.present(drawable)
         commandBuffer.commit()
     }
     
-    func drawScene(_ scene: Scene, renderEncoder: MTLRenderCommandEncoder) {
-        drawNodeRecursive(scene.rootNode, renderEncoder: renderEncoder, models: scene.models, textures: scene.textures)
+    func drawScene(renderEncoder: MTLRenderCommandEncoder) {
+        drawNodeRecursive(self.scene.rootNode, renderEncoder: renderEncoder, models: scene.models, textures: scene.textures, camera: self.scene.camera)
     }
     
-    func drawNodeRecursive(_ node: Node, renderEncoder: MTLRenderCommandEncoder, models: [String: Model], textures: [String: MTLTexture]) {
+    func drawNodeRecursive(_ node: Node, renderEncoder: MTLRenderCommandEncoder, models: [String: Model], textures: [String: MTLTexture], camera: Node) {
         if node.isVisible && !node.modelName.isEmpty && !node.textureName.isEmpty {
             guard let model = models[node.modelName] else {
                 fatalError("Error: model \(node.modelName) was expected to be present.")
@@ -137,6 +143,13 @@ class Renderer: NSObject, MTKViewDelegate {
             guard let texture = textures[node.textureName] else {
                 fatalError("Error: texture \(node.textureName) was expected was expected to be present.")
             }
+            
+            var vertexUniforms = VertexUniforms(viewProjectionMatrix: self.scene.camera.modelMatrix,
+                                               modelMatrix: node.getModelMatrix())
+            
+            renderEncoder.setVertexBytes(&vertexUniforms,
+                                         length: MemoryLayout<VertexUniforms>.size,
+                                         index: 1)
             
             renderEncoder.setVertexBuffer(model.vertexBuffer,
                                           offset: 0,
@@ -156,7 +169,8 @@ class Renderer: NSObject, MTKViewDelegate {
             drawNodeRecursive(child,
                               renderEncoder: renderEncoder,
                               models: models,
-                              textures: textures)
+                              textures: textures,
+                              camera: camera)
         }
     }
 
@@ -166,38 +180,4 @@ class Renderer: NSObject, MTKViewDelegate {
 //        let aspect = Float(size.width) / Float(size.height)
 //        projectionMatrix = matrix_perspective_right_hand(fovyRadians: radians_from_degrees(65), aspectRatio:aspect, nearZ: 0.1, farZ: 100.0)
     }
-}
-
-// Generic matrix math utility functions
-func matrix4x4_rotation(radians: Float, axis: SIMD3<Float>) -> matrix_float4x4 {
-    let unitAxis = normalize(axis)
-    let ct = cosf(radians)
-    let st = sinf(radians)
-    let ci = 1 - ct
-    let x = unitAxis.x, y = unitAxis.y, z = unitAxis.z
-    return matrix_float4x4.init(columns:(vector_float4(    ct + x * x * ci, y * x * ci + z * st, z * x * ci - y * st, 0),
-                                         vector_float4(x * y * ci - z * st,     ct + y * y * ci, z * y * ci + x * st, 0),
-                                         vector_float4(x * z * ci + y * st, y * z * ci - x * st,     ct + z * z * ci, 0),
-                                         vector_float4(                  0,                   0,                   0, 1)))
-}
-
-func matrix4x4_translation(_ translationX: Float, _ translationY: Float, _ translationZ: Float) -> matrix_float4x4 {
-    return matrix_float4x4.init(columns:(vector_float4(1, 0, 0, 0),
-                                         vector_float4(0, 1, 0, 0),
-                                         vector_float4(0, 0, 1, 0),
-                                         vector_float4(translationX, translationY, translationZ, 1)))
-}
-
-func matrix_perspective_right_hand(fovyRadians fovy: Float, aspectRatio: Float, nearZ: Float, farZ: Float) -> matrix_float4x4 {
-    let ys = 1 / tanf(fovy * 0.5)
-    let xs = ys / aspectRatio
-    let zs = farZ / (nearZ - farZ)
-    return matrix_float4x4.init(columns:(vector_float4(xs,  0, 0,   0),
-                                         vector_float4( 0, ys, 0,   0),
-                                         vector_float4( 0,  0, zs, -1),
-                                         vector_float4( 0,  0, zs * nearZ, 0)))
-}
-
-func radians_from_degrees(_ degrees: Float) -> Float {
-    return (degrees / 180) * .pi
 }

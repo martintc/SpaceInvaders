@@ -7,6 +7,7 @@
 
 import Foundation
 import simd
+import Metal
 
 class Node {
     var name: String
@@ -16,6 +17,10 @@ class Node {
     var modelName: String = ""
     var textureName: String = ""
     var isVisible: Bool = true
+    var modelMatrix = matrix_identity_float4x4
+    var scale: Float = 1
+    var primitiveType: MTLPrimitiveType = MTLPrimitiveType.triangle
+    var color: simd_float3 = simd_float3(1, 0, 0)
     
     /// - Parameter name: name of the node
     init(name: String) {
@@ -61,6 +66,14 @@ class Node {
     /// - Parameter node: Node to be added as a child node
     func addChildNode(child: Node) {
         self.children.append(child)
+    }
+    
+    /// Get the model matrix
+    /// - Returns: Model matrix which is a combination of the position, and scale
+    func getModelMatrix() -> simd_float4x4 {
+        let scaleMatrix = simd_float4x4(scaleBy: self.scale)
+        let translationMatrix = simd_float4x4(self.position[0], self.position[1], self.position[2])
+        return translationMatrix * scaleMatrix
     }
     
     /// Recursively search children nodes for a node of a given name
