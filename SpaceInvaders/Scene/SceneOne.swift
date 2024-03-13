@@ -81,6 +81,7 @@ class SceneOne: Scene {
         playerNode.setModelName("quad")
         playerNode.setTextureName("player")
         playerNode.scale = simd_float3(0.25, 0.25, 0.25)
+        playerNode.isControlled = true
         
         let aliens = Node(name: "alients")
         

@@ -83,10 +83,7 @@ class Renderer: NSObject, MTKViewDelegate {
     }
     
     func update() {
-        let projectionMatrix = matrix_perspective_right_hand(fovyRadians: .pi / 6,
-                                                                      aspectRatio: getAspectRatio(view: self.view),
-                                                                      nearZ: 0.1,
-                                                                      farZ: 100)
+        self.scene.update()
     }
 
     func draw(in view: MTKView) {

@@ -21,6 +21,8 @@ class Node {
     var primitiveType: MTLPrimitiveType = MTLPrimitiveType.triangle
     var color: simd_float3 = simd_float3(1, 0, 0)
     
+    var isControlled: Bool = false
+    
     var modelMatrix: simd_float4x4 {
         var modelMatrix = matrix_identity_float4x4
         
@@ -90,5 +92,21 @@ class Node {
         }
         
         return nil
+    }
+    
+    func update() {
+        if (isControlled) {
+            if (Keyboard.isKeyPressed(.rightArrow)) {
+                self.position.x += 0.01
+            }
+            
+            if (Keyboard.isKeyPressed(.leftArrow)) {
+                self.position.x -= 0.01
+            }
+        }
+        
+        for node in children {
+            node.update()
+        }
     }
 }

@@ -54,4 +54,9 @@ class Scene {
         }
     }
     
+    func update() {
+        camera.update(deltaTime: 0.1)
+        rootNode.update()
+    }
+    
 }
