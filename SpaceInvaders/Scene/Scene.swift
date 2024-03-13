@@ -13,7 +13,7 @@ class Scene {
     var rootNode = Node(name: "Root")
     var textures = [String : MTLTexture]()
     var models = [String : Model]()
-    var camera = Node(name: "Camera")
+    var camera: Camera = FixedCamera()
     
     /// Insert into texture dictionary a new texture
     /// - Parameter name: reference name of the texture

@@ -23,15 +23,16 @@ struct VertexOut {
 };
 
 struct VertexUniforms {
-    float4x4 viewProjectionMatrix;
     float4x4 modelMatrix;
+    float4x4 viewMatrix;
+    float4x4 projectionMatrix;
 };
 
 vertex VertexOut vertexShader(Vertex in [[stage_in]],
                               constant VertexUniforms &uniforms [[buffer(1)]])
 {
     VertexOut out;
-    out.position = uniforms.viewProjectionMatrix * uniforms.modelMatrix * float4(in.position, 1.0);
+    out.position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * float4(in.position, 1.0);
     out.texCoord = in.texCoord;
     return out;
 }

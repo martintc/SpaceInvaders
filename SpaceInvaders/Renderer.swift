@@ -11,16 +11,6 @@ import Metal
 import MetalKit
 import simd
 
-struct Vertex {
-    var position: simd_float3 // (float, float float) (1.0, 1.0, 1.0) (x, y, z)
-    var texCoord: simd_float3 // (r, b, g)
-}
-
-struct VertexUniforms {
-    var viewProjectionMatrix: simd_float4x4
-    var modelMatrix: simd_float4x4
-}
-
 class Renderer: NSObject, MTKViewDelegate {
 
     public let device: MTLDevice
@@ -97,9 +87,6 @@ class Renderer: NSObject, MTKViewDelegate {
                                                                       aspectRatio: getAspectRatio(view: self.view),
                                                                       nearZ: 0.1,
                                                                       farZ: 100)
-        let viewMatrix = self.scene.camera.getModelMatrix()
-        
-        self.scene.camera.modelMatrix = projectionMatrix * viewMatrix
     }
 
     func draw(in view: MTKView) {
@@ -134,7 +121,7 @@ class Renderer: NSObject, MTKViewDelegate {
         drawNodeRecursive(self.scene.rootNode, renderEncoder: renderEncoder, models: scene.models, textures: scene.textures, camera: self.scene.camera)
     }
     
-    func drawNodeRecursive(_ node: Node, renderEncoder: MTLRenderCommandEncoder, models: [String: Model], textures: [String: MTLTexture], camera: Node) {
+    func drawNodeRecursive(_ node: Node, renderEncoder: MTLRenderCommandEncoder, models: [String: Model], textures: [String: MTLTexture], camera: Camera) {
         if node.isVisible && !node.modelName.isEmpty && !node.textureName.isEmpty {
             guard let model = models[node.modelName] else {
                 fatalError("Error: model \(node.modelName) was expected to be present.")
@@ -144,8 +131,9 @@ class Renderer: NSObject, MTKViewDelegate {
                 fatalError("Error: texture \(node.textureName) was expected was expected to be present.")
             }
             
-            var vertexUniforms = VertexUniforms(viewProjectionMatrix: self.scene.camera.modelMatrix,
-                                               modelMatrix: node.getModelMatrix())
+            var vertexUniforms = VertexUniforms(modelMatrix: node.modelMatrix, 
+                                                viewMatrix: camera.viewMatrix,
+                                                projectionMatrix: camera.projectionMatrix)
             
             renderEncoder.setVertexBytes(&vertexUniforms,
                                          length: MemoryLayout<VertexUniforms>.size,
