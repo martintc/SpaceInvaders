@@ -107,56 +107,12 @@ class Renderer: NSObject, MTKViewDelegate {
         
         renderEncoder.setRenderPipelineState(self.renderPipelineState)
         
-        drawScene(renderEncoder: renderEncoder)
+        self.scene.render(renderCommandEncoder: renderEncoder, camera: self.scene.camera)
+        
         
         renderEncoder.endEncoding()
         commandBuffer.present(drawable)
         commandBuffer.commit()
-    }
-    
-    func drawScene(renderEncoder: MTLRenderCommandEncoder) {
-        drawNodeRecursive(self.scene.rootNode, renderEncoder: renderEncoder, models: scene.models, textures: scene.textures, camera: self.scene.camera)
-    }
-    
-    func drawNodeRecursive(_ node: NodeProtocol, renderEncoder: MTLRenderCommandEncoder, models: [String: Model], textures: [String: MTLTexture], camera: Camera) {
-        if node.isVisible && !node.modelName.isEmpty && !node.textureName.isEmpty {
-            guard let model = models[node.modelName] else {
-                fatalError("Error: model \(node.modelName) was expected to be present.")
-            }
-            
-            guard let texture = textures[node.textureName] else {
-                fatalError("Error: texture \(node.textureName) was expected was expected to be present.")
-            }
-            
-            var vertexUniforms = VertexUniforms(modelMatrix: node.modelMatrix, 
-                                                viewMatrix: camera.viewMatrix,
-                                                projectionMatrix: camera.projectionMatrix)
-            
-            renderEncoder.setVertexBytes(&vertexUniforms,
-                                         length: MemoryLayout<VertexUniforms>.size,
-                                         index: 1)
-            
-            renderEncoder.setVertexBuffer(model.vertexBuffer,
-                                          offset: 0,
-                                          index: 30)
-            
-            renderEncoder.setFragmentTexture(texture,
-                                             index: 0)
-            
-            renderEncoder.drawIndexedPrimitives(type: .triangle,
-                                                indexCount: model.indexBuffer.length / MemoryLayout<UInt16>.size,
-                                                indexType: .uint16,
-                                                indexBuffer: model.indexBuffer,
-                                                indexBufferOffset: 0)
-        }
-        
-        for child in node.children {
-            drawNodeRecursive(child,
-                              renderEncoder: renderEncoder,
-                              models: models,
-                              textures: textures,
-                              camera: camera)
-        }
     }
 
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {

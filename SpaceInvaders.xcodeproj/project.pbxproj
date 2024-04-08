@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA1DB71D2BC39C34007C3AD7 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */; };
+		EA1DB71F2BC39E4A007C3AD7 /* ModelLibray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */; };
 		EA49CA482B8D12920067474C /* MathUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49CA472B8D12920067474C /* MathUtilities.swift */; };
 		EA772F7D2B8700D300648523 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F7C2B8700D300648523 /* Scene.swift */; };
 		EA772F822B87095400648523 /* SceneOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F812B87095400648523 /* SceneOne.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
+		EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibray.swift; sourceTree = "<group>"; };
 		EA49CA472B8D12920067474C /* MathUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtilities.swift; sourceTree = "<group>"; };
 		EA772F7C2B8700D300648523 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		EA772F812B87095400648523 /* SceneOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneOne.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				EA8207C52BA15BDF0096BE8A /* Math.swift */,
 				EA8207CD2BA15C730096BE8A /* Axis.swift */,
 				EA8207D22BA15CD50096BE8A /* CameraType.swift */,
+				EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */,
+				EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -285,7 +291,9 @@
 				EA8207DD2BA166A40096BE8A /* Vertex.swift in Sources */,
 				EA8207D32BA15CD50096BE8A /* CameraType.swift in Sources */,
 				EA8207C82BA15C160096BE8A /* simd_float3+Extension.swift in Sources */,
+				EA1DB71D2BC39C34007C3AD7 /* TextureLibrary.swift in Sources */,
 				EA49CA482B8D12920067474C /* MathUtilities.swift in Sources */,
+				EA1DB71F2BC39E4A007C3AD7 /* ModelLibray.swift in Sources */,
 				EA8207C12BA15A9B0096BE8A /* KeyCodes.swift in Sources */,
 				EA8207C32BA15ABC0096BE8A /* Keyboard.swift in Sources */,
 				EA772F842B8709C800648523 /* Model.swift in Sources */,

@@ -59,4 +59,8 @@ class Scene {
         rootNode.updateRecursive()
     }
     
+    func render(renderCommandEncoder: MTLRenderCommandEncoder, camera: Camera) {
+        rootNode.renderRecursive(renderCommandEncoder, camera: camera)
+    }
+    
 }

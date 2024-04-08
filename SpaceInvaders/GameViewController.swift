@@ -16,6 +16,9 @@ class GameViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TextureLibrary.shared.loadTextures()
+        ModelLibray.shared.loadModels()
 
         guard let mtkView = self.view as? MTKView else {
             print("View attached to GameViewController is not an MTKView")

@@ -23,8 +23,6 @@ protocol NodeProtocol {
     init(name: String)
     
     func update()
-    
-    func render()
 }
 
 extension NodeProtocol {
@@ -101,10 +99,45 @@ extension NodeProtocol {
         }
     }
     
-    func renderRecursive() {
-        self.render()
+    func renderRecursive(_ renderCommandEncoder: MTLRenderCommandEncoder, camera: Camera) {
+        self.render(renderCommandEncoder, camera: camera)
         for node in children {
-            node.renderRecursive()
+            node.renderRecursive(renderCommandEncoder, camera: camera)
         }
+    }
+    
+    func render(_ renderCommandEncoder: MTLRenderCommandEncoder, camera: Camera) {
+        if self.modelName.isEmpty || self.textureName.isEmpty {
+            return
+        }
+        
+        guard let model = ModelLibray.shared.getModel(name: self.modelName) else {
+            fatalError("Error: model \(self.modelName) was expected to be present for node \(self.name)")
+        }
+        
+        guard let texture = TextureLibrary.shared.getTexture(name: self.textureName) else {
+            fatalError("Error: texture \(self.textureName) was expected was expected to be present for node \(self.name).")
+        }
+        
+        var vertexUniforms = VertexUniforms(modelMatrix: self.modelMatrix,
+                                            viewMatrix: camera.viewMatrix,
+                                            projectionMatrix: camera.projectionMatrix)
+        
+        renderCommandEncoder.setVertexBytes(&vertexUniforms,
+                                     length: MemoryLayout<VertexUniforms>.size,
+                                     index: 1)
+        
+        renderCommandEncoder.setVertexBuffer(model.vertexBuffer,
+                                      offset: 0,
+                                      index: 30)
+        
+        renderCommandEncoder.setFragmentTexture(texture,
+                                         index: 0)
+        
+        renderCommandEncoder.drawIndexedPrimitives(type: .triangle,
+                                            indexCount: model.indexBuffer.length / MemoryLayout<UInt16>.size,
+                                            indexType: .uint16,
+                                            indexBuffer: model.indexBuffer,
+                                            indexBufferOffset: 0)
     }
 }
