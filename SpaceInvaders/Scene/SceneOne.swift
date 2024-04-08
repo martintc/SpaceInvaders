@@ -54,10 +54,6 @@ class SceneOne: Scene {
 //        alienNodeThree.scale = simd_float3(0.25, 0.25, 0.25)
 //        aliens.addChildNode(child: alienNodeThree)
         
-        // Add player node to scene
-//        self.rootNode.addChildNode(child: playerNode)
-//        self.rootNode.addChildNode(child: aliens)
-        
         // configure camera
         self.camera.position = simd_float3(0, 2, 10);
     }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EA1DB71D2BC39C34007C3AD7 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */; };
 		EA1DB71F2BC39E4A007C3AD7 /* ModelLibray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */; };
+		EA1DB7212BC3A63D007C3AD7 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB7202BC3A63D007C3AD7 /* Bullet.swift */; };
+		EA1DB7232BC3A733007C3AD7 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB7222BC3A733007C3AD7 /* Direction.swift */; };
 		EA49CA482B8D12920067474C /* MathUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49CA472B8D12920067474C /* MathUtilities.swift */; };
 		EA772F7D2B8700D300648523 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F7C2B8700D300648523 /* Scene.swift */; };
 		EA772F822B87095400648523 /* SceneOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F812B87095400648523 /* SceneOne.swift */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
 		EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibray.swift; sourceTree = "<group>"; };
+		EA1DB7202BC3A63D007C3AD7 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		EA1DB7222BC3A733007C3AD7 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		EA49CA472B8D12920067474C /* MathUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtilities.swift; sourceTree = "<group>"; };
 		EA772F7C2B8700D300648523 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		EA772F812B87095400648523 /* SceneOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneOne.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				EA772F832B8709C800648523 /* Model.swift */,
 				EA8207DA2BA166840096BE8A /* VertexUniform.swift */,
 				EA8207DC2BA166A40096BE8A /* Vertex.swift */,
+				EA1DB7222BC3A733007C3AD7 /* Direction.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				EAF958C62BB6795D005B6E42 /* Player.swift */,
 				EAF958CB2BB67C21005B6E42 /* Alien.swift */,
 				EAF958CD2BB77397005B6E42 /* GenericNode.swift */,
+				EA1DB7202BC3A63D007C3AD7 /* Bullet.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -273,6 +279,8 @@
 				EAAD68B02B806B200062E0A3 /* Shaders.metal in Sources */,
 				EAF958CE2BB77397005B6E42 /* GenericNode.swift in Sources */,
 				EA8207D52BA15E290096BE8A /* FixedCamera.swift in Sources */,
+				EA1DB7212BC3A63D007C3AD7 /* Bullet.swift in Sources */,
+				EA1DB7232BC3A733007C3AD7 /* Direction.swift in Sources */,
 				EA8207C62BA15BDF0096BE8A /* Math.swift in Sources */,
 				EA8207CC2BA15C580096BE8A /* simd_float4x4+Extension.swift in Sources */,
 				EAF958C72BB6795D005B6E42 /* Player.swift in Sources */,

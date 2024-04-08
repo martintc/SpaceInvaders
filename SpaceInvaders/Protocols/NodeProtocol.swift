@@ -23,6 +23,7 @@ protocol NodeProtocol {
     init(name: String)
     
     func update()
+    func render(_ renderCommandEncoder: MTLRenderCommandEncoder, camera: Camera)
 }
 
 extension NodeProtocol {

@@ -30,6 +30,8 @@ class Player: NodeProtocol {
     
     var primitiveType: MTLPrimitiveType = .triangle
     
+    var cannonActive = false
+    
     required init(name: String) {
         self.name = name
         self.children = [NodeProtocol]()
@@ -45,10 +47,14 @@ class Player: NodeProtocol {
         if (Keyboard.isKeyPressed(.leftArrow)) {
             self.position.x -= 0.01
         }
-    }
-    
-    func render() {
-        // do nothing
+        
+        if (Keyboard.isKeyPressed(.space) && cannonActive == false) {
+            let bullet = Bullet(name: "bullet", direction: .Up)
+            let parent = self
+            bullet.parentNode = parent
+            self.children.append(bullet)
+            cannonActive = true
+        }
     }
     
     

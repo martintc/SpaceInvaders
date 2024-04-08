@@ -40,9 +40,4 @@ class GenericNode: NodeProtocol {
         // do nothing
     }
     
-    func render() {
-        // do nothing
-    }
-    
-    
 }
