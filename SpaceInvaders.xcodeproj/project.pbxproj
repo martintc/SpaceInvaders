@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		EA49CA482B8D12920067474C /* MathUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49CA472B8D12920067474C /* MathUtilities.swift */; };
 		EA772F7D2B8700D300648523 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F7C2B8700D300648523 /* Scene.swift */; };
-		EA772F7F2B8700EF00648523 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F7E2B8700EF00648523 /* Node.swift */; };
 		EA772F822B87095400648523 /* SceneOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F812B87095400648523 /* SceneOne.swift */; };
 		EA772F842B8709C800648523 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F832B8709C800648523 /* Model.swift */; };
 		EA8207BE2BA15A3E0096BE8A /* MTKView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8207BD2BA15A3D0096BE8A /* MTKView+Extensions.swift */; };
@@ -31,12 +30,15 @@
 		EAAD68B02B806B200062E0A3 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EAAD68AF2B806B200062E0A3 /* Shaders.metal */; };
 		EAAD68B32B806B230062E0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAAD68B22B806B230062E0A3 /* Assets.xcassets */; };
 		EAAD68B62B806B230062E0A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAAD68B42B806B230062E0A3 /* Main.storyboard */; };
+		EAF958C72BB6795D005B6E42 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF958C62BB6795D005B6E42 /* Player.swift */; };
+		EAF958CA2BB67AF0005B6E42 /* NodeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF958C92BB67AF0005B6E42 /* NodeProtocol.swift */; };
+		EAF958CC2BB67C21005B6E42 /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF958CB2BB67C21005B6E42 /* Alien.swift */; };
+		EAF958CE2BB77397005B6E42 /* GenericNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF958CD2BB77397005B6E42 /* GenericNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EA49CA472B8D12920067474C /* MathUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtilities.swift; sourceTree = "<group>"; };
 		EA772F7C2B8700D300648523 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
-		EA772F7E2B8700EF00648523 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		EA772F812B87095400648523 /* SceneOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneOne.swift; sourceTree = "<group>"; };
 		EA772F832B8709C800648523 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EA8207BD2BA15A3D0096BE8A /* MTKView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKView+Extensions.swift"; sourceTree = "<group>"; };
@@ -60,6 +62,10 @@
 		EAAD68B22B806B230062E0A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAAD68B52B806B230062E0A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EAAD68B72B806B230062E0A3 /* SpaceInvaders.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpaceInvaders.entitlements; sourceTree = "<group>"; };
+		EAF958C62BB6795D005B6E42 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		EAF958C92BB67AF0005B6E42 /* NodeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeProtocol.swift; sourceTree = "<group>"; };
+		EAF958CB2BB67C21005B6E42 /* Alien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alien.swift; sourceTree = "<group>"; };
+		EAF958CD2BB77397005B6E42 /* GenericNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,7 @@
 		EA8207D92BA1666F0096BE8A /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				EA772F832B8709C800648523 /* Model.swift */,
 				EA8207DA2BA166840096BE8A /* VertexUniform.swift */,
 				EA8207DC2BA166A40096BE8A /* Vertex.swift */,
 			);
@@ -149,6 +156,8 @@
 		EAAD68A82B806B200062E0A3 /* SpaceInvaders */ = {
 			isa = PBXGroup;
 			children = (
+				EAF958C82BB67AE7005B6E42 /* Protocols */,
+				EAF958C32BB672DB005B6E42 /* Nodes */,
 				EA8207D92BA1666F0096BE8A /* Types */,
 				EA8207D62BA15FA80096BE8A /* Scene */,
 				EA8207CF2BA15C9B0096BE8A /* Camera */,
@@ -162,11 +171,27 @@
 				EAAD68B22B806B230062E0A3 /* Assets.xcassets */,
 				EAAD68B42B806B230062E0A3 /* Main.storyboard */,
 				EAAD68B72B806B230062E0A3 /* SpaceInvaders.entitlements */,
-				EA772F7E2B8700EF00648523 /* Node.swift */,
-				EA772F832B8709C800648523 /* Model.swift */,
 				EA49CA472B8D12920067474C /* MathUtilities.swift */,
 			);
 			path = SpaceInvaders;
+			sourceTree = "<group>";
+		};
+		EAF958C32BB672DB005B6E42 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				EAF958C62BB6795D005B6E42 /* Player.swift */,
+				EAF958CB2BB67C21005B6E42 /* Alien.swift */,
+				EAF958CD2BB77397005B6E42 /* GenericNode.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		EAF958C82BB67AE7005B6E42 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				EAF958C92BB67AF0005B6E42 /* NodeProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,14 +265,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAAD68B02B806B200062E0A3 /* Shaders.metal in Sources */,
+				EAF958CE2BB77397005B6E42 /* GenericNode.swift in Sources */,
 				EA8207D52BA15E290096BE8A /* FixedCamera.swift in Sources */,
 				EA8207C62BA15BDF0096BE8A /* Math.swift in Sources */,
 				EA8207CC2BA15C580096BE8A /* simd_float4x4+Extension.swift in Sources */,
+				EAF958C72BB6795D005B6E42 /* Player.swift in Sources */,
+				EAF958CA2BB67AF0005B6E42 /* NodeProtocol.swift in Sources */,
 				EA8207CE2BA15C730096BE8A /* Axis.swift in Sources */,
 				EAAD68AC2B806B200062E0A3 /* GameViewController.swift in Sources */,
+				EAF958CC2BB67C21005B6E42 /* Alien.swift in Sources */,
 				EA772F822B87095400648523 /* SceneOne.swift in Sources */,
 				EA772F7D2B8700D300648523 /* Scene.swift in Sources */,
-				EA772F7F2B8700EF00648523 /* Node.swift in Sources */,
 				EA8207D12BA15CA80096BE8A /* Camera.swift in Sources */,
 				EA8207DB2BA166840096BE8A /* VertexUniform.swift in Sources */,
 				EA8207BE2BA15A3E0096BE8A /* MTKView+Extensions.swift in Sources */,

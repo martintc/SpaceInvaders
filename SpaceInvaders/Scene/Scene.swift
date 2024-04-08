@@ -10,7 +10,7 @@ import Metal
 import MetalKit
 
 class Scene {
-    var rootNode = Node(name: "Root")
+    var rootNode: NodeProtocol = GenericNode(name: "root")
     var textures = [String : MTLTexture]()
     var models = [String : Model]()
     var camera: Camera = FixedCamera()
@@ -46,7 +46,7 @@ class Scene {
     /// Returns the node of a given name
     /// - Parameter name: name of the node to query for
     /// - Returns: Node if found
-    func nodeName(_ name: String) -> Node? {
+    func nodeName(_ name: String) -> NodeProtocol? {
         if rootNode.name == name {
             return rootNode
         } else {
@@ -56,7 +56,7 @@ class Scene {
     
     func update() {
         camera.update(deltaTime: 0.1)
-        rootNode.update()
+        rootNode.updateRecursive()
     }
     
 }

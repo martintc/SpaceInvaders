@@ -16,40 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
             endingLineNumber = "123"
-            landmarkName = "Renderer"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "584C7951-E9FD-4934-B1A5-2A0F2B5943A8 - a711169d8c823e1e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SpaceInvaders.Renderer.drawNodeRecursive(_: SpaceInvaders.Node, renderEncoder: __C.MTLRenderCommandEncoder, models: Swift.Dictionary&lt;Swift.String, SpaceInvaders.Model&gt;, textures: Swift.Dictionary&lt;Swift.String, __C.MTLTexture&gt;) -&gt; ()"
-                  moduleName = "SpaceInvaders"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/toddmartin/Learning/Swift/SpaceInvaders/SpaceInvaders/Renderer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "133"
-                  endingLineNumber = "133"
-                  offsetFromSymbolStart = "204">
-               </Location>
-               <Location
-                  uuid = "584C7951-E9FD-4934-B1A5-2A0F2B5943A8 - a711169d8c823e1e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SpaceInvaders.Renderer.drawNodeRecursive(_: SpaceInvaders.Node, renderEncoder: __C.MTLRenderCommandEncoder, models: Swift.Dictionary&lt;Swift.String, SpaceInvaders.Model&gt;, textures: Swift.Dictionary&lt;Swift.String, __C.MTLTexture&gt;) -&gt; ()"
-                  moduleName = "SpaceInvaders"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/toddmartin/Learning/Swift/SpaceInvaders/SpaceInvaders/Renderer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "133"
-                  endingLineNumber = "133"
-                  offsetFromSymbolStart = "424">
-               </Location>
-            </Locations>
+            landmarkName = "drawNodeRecursive(_:renderEncoder:models:textures:camera:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

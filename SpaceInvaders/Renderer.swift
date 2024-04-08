@@ -118,7 +118,7 @@ class Renderer: NSObject, MTKViewDelegate {
         drawNodeRecursive(self.scene.rootNode, renderEncoder: renderEncoder, models: scene.models, textures: scene.textures, camera: self.scene.camera)
     }
     
-    func drawNodeRecursive(_ node: Node, renderEncoder: MTLRenderCommandEncoder, models: [String: Model], textures: [String: MTLTexture], camera: Camera) {
+    func drawNodeRecursive(_ node: NodeProtocol, renderEncoder: MTLRenderCommandEncoder, models: [String: Model], textures: [String: MTLTexture], camera: Camera) {
         if node.isVisible && !node.modelName.isEmpty && !node.textureName.isEmpty {
             guard let model = models[node.modelName] else {
                 fatalError("Error: model \(node.modelName) was expected to be present.")
