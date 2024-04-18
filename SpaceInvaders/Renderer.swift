@@ -20,6 +20,8 @@ class Renderer: NSObject, MTKViewDelegate {
     var vertexDescriptor: MTLVertexDescriptor
     
     var scene: SceneOne
+    
+    var level: LevelProtocol
 
     init?(metalKitView: MTKView) {
         self.view = metalKitView
@@ -41,6 +43,9 @@ class Renderer: NSObject, MTKViewDelegate {
         self.renderPipelineState = Renderer.buildRenderPipelineState(self.view, device: self.device, vertexDescriptor: self.vertexDescriptor)
         
         self.scene = SceneOne(device: self.device)
+        
+        self.level = LevelOne()
+        self.level.load()
         
         super.init()
     }
@@ -83,7 +88,8 @@ class Renderer: NSObject, MTKViewDelegate {
     }
     
     func update() {
-        self.scene.update()
+//        self.scene.update()
+        self.level.update()
     }
 
     func draw(in view: MTKView) {
@@ -107,7 +113,9 @@ class Renderer: NSObject, MTKViewDelegate {
         
         renderEncoder.setRenderPipelineState(self.renderPipelineState)
         
-        self.scene.render(renderCommandEncoder: renderEncoder, camera: self.scene.camera)
+//        self.scene.render(renderCommandEncoder: renderEncoder, camera: self.scene.camera)
+        
+        self.level.render(renderEncoder: renderEncoder)
         
         
         renderEncoder.endEncoding()
