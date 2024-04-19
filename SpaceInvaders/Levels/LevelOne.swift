@@ -30,16 +30,4 @@ class LevelOne: LevelProtocol {
         gameObjects.append(playerNode)
         gameObjects.append(alienNode)
     }
-    
-    func render(renderEncoder: any MTLRenderCommandEncoder) {
-        for gameObject in gameObjects {
-            gameObject.renderRecursive(renderEncoder, camera: self.camera)
-        }
-    }
-    
-    func update() {
-        for gameObject in gameObjects {
-            gameObject.updateRecursive()
-        }
-    }
 }

@@ -19,9 +19,7 @@ class Renderer: NSObject, MTKViewDelegate {
     var commandQueque: MTLCommandQueue
     var vertexDescriptor: MTLVertexDescriptor
     
-    var scene: SceneOne
-    
-    var level: LevelProtocol
+    var game: Game
 
     init?(metalKitView: MTKView) {
         self.view = metalKitView
@@ -42,10 +40,13 @@ class Renderer: NSObject, MTKViewDelegate {
         
         self.renderPipelineState = Renderer.buildRenderPipelineState(self.view, device: self.device, vertexDescriptor: self.vertexDescriptor)
         
-        self.scene = SceneOne(device: self.device)
+//        self.scene = SceneOne(device: self.device)
+//        
+//        self.level = LevelOne()
+//        self.level.load()
         
-        self.level = LevelOne()
-        self.level.load()
+        self.game = Game()
+        game.load()
         
         super.init()
     }
@@ -89,7 +90,8 @@ class Renderer: NSObject, MTKViewDelegate {
     
     func update() {
 //        self.scene.update()
-        self.level.update()
+//        self.level.update()
+        self.game.update()
     }
 
     func draw(in view: MTKView) {
@@ -115,7 +117,8 @@ class Renderer: NSObject, MTKViewDelegate {
         
 //        self.scene.render(renderCommandEncoder: renderEncoder, camera: self.scene.camera)
         
-        self.level.render(renderEncoder: renderEncoder)
+//        self.level.render(renderEncoder: renderEncoder)
+        self.game.render(encoder: renderEncoder)
         
         
         renderEncoder.endEncoding()

@@ -40,21 +40,21 @@ class Player: NodeProtocol {
     }
     
     func update() {
-        if (Keyboard.isKeyPressed(.rightArrow)) {
-            self.position.x += 0.01
-        }
-        
-        if (Keyboard.isKeyPressed(.leftArrow)) {
-            self.position.x -= 0.01
-        }
-        
-        if (Keyboard.isKeyPressed(.space) && cannonActive == false) {
-            let bullet = Bullet(name: "bullet", direction: .Up)
-            let parent = self
-            bullet.parentNode = parent
-            self.children.append(bullet)
-            cannonActive = true
-        }
+//        if (Keyboard.isKeyPressed(.rightArrow)) {
+//            self.position.x += 0.01
+//        }
+//        
+//        if (Keyboard.isKeyPressed(.leftArrow)) {
+//            self.position.x -= 0.01
+//        }
+//        
+//        if (Keyboard.isKeyPressed(.space) && cannonActive == false) {
+//            let bullet = Bullet(name: "bullet", direction: .Up)
+//            let parent = self
+//            bullet.parentNode = parent
+//            self.children.append(bullet)
+//            cannonActive = true
+//        }
     }
     
     
