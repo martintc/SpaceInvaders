@@ -14,6 +14,8 @@ class Alien: NodeProtocol {
     
     var children: [any NodeProtocol]
     
+    var nodeType: NodeType = NodeType.Sprite
+    
     var name: String
     
     var position: simd_float3 = simd_float3(0, 0, 0)

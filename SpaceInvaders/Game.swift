@@ -44,6 +44,8 @@ class Game: GameProtocol {
         
         if (Keyboard.isKeyPressed(.space) && levels[currentLevel].findGameObject(name: "playerBullet") == nil) {
             let bullet = Bullet(name: "playerBullet", direction: .Up)
+            bullet.position.x = playerNode!.position.x
+            bullet.position.y = playerNode!.position.y
             levels[currentLevel].addGameObject(bullet)
         }
     }

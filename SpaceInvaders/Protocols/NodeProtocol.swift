@@ -10,6 +10,7 @@ import MetalKit
 
 protocol NodeProtocol {
     var name: String { get set }
+    var nodeType: NodeType { get set }
     var position: simd_float3 { get set }
     var scale: simd_float3 { get set }
     var parentNode: NodeProtocol? { get set}

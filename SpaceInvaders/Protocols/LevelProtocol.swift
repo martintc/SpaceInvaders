@@ -40,6 +40,19 @@ extension LevelProtocol {
         for gameObject in gameObjects {
             gameObject.updateRecursive()
         }
+        
+        checkBulletBounds()
+    }
+    
+    private mutating func checkBulletBounds() {
+        guard let bullet = self.findGameObject(name: "playerBullet") else {
+            return
+        }
+        
+        if bullet.position.y > 10 {
+            gameObjects.removeLast()
+            print("Removed")
+        }
     }
     
     mutating func addGameObject(_ node: any NodeProtocol) {
