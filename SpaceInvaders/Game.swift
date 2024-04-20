@@ -48,6 +48,11 @@ class Game: GameProtocol {
             bullet.position.y = playerNode!.position.y + 0.25
             levels[currentLevel].addGameObject(bullet)
         }
+        
+        // testing code
+        if (Keyboard.isKeyPressed(.r)) {
+            self.levels[currentLevel].load()
+        }
     }
     
     func render(encoder: any MTLRenderCommandEncoder) {

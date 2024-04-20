@@ -20,6 +20,10 @@ class LevelOne: LevelProtocol {
     }
     
     func load() {
+        if gameObjects.count > 0 {
+            gameObjects.removeAll()
+        }
+        
         let universalScale = simd_float3(0.40, 0.40, 0.40)
         
         let playerNode = Player(name: "player")
