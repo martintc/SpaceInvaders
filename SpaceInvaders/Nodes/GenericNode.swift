@@ -14,6 +14,8 @@ class GenericNode: NodeProtocol {
     
     var children: [any NodeProtocol]
     
+    var nodeType: NodeType = NodeType.None
+    
     var name: String
     
     var position: simd_float3 = simd_float3(0, 0, 0)
@@ -30,10 +32,17 @@ class GenericNode: NodeProtocol {
     
     var color: simd_float3 = simd_float3(0, 0, 0)
     
+    var collidable: Bool = false
+    
+    var isProjectile: Bool = false
+    
+    var isDead: Bool
+    
     required init(name: String) {
         self.name = name
         self.parentNode = nil
         self.children = [NodeProtocol]()
+        self.isDead = false
     }
     
     func update() {

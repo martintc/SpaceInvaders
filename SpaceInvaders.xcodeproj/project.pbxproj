@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA079F402BD32AD3000E32F6 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA079F3F2BD32AD3000E32F6 /* NodeType.swift */; };
 		EA1DB71D2BC39C34007C3AD7 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */; };
 		EA1DB71F2BC39E4A007C3AD7 /* ModelLibray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */; };
 		EA1DB7212BC3A63D007C3AD7 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB7202BC3A63D007C3AD7 /* Bullet.swift */; };
 		EA1DB7232BC3A733007C3AD7 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB7222BC3A733007C3AD7 /* Direction.swift */; };
+		EA2964BF2BD1D4A100CE2353 /* LevelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2964BE2BD1D4A100CE2353 /* LevelProtocol.swift */; };
+		EA2964C12BD1D50F00CE2353 /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2964C02BD1D50F00CE2353 /* LevelOne.swift */; };
+		EA2964C32BD217FF00CE2353 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2964C22BD217FF00CE2353 /* Game.swift */; };
+		EA2964C52BD2181100CE2353 /* GameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2964C42BD2181100CE2353 /* GameProtocol.swift */; };
 		EA49CA482B8D12920067474C /* MathUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49CA472B8D12920067474C /* MathUtilities.swift */; };
 		EA772F7D2B8700D300648523 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F7C2B8700D300648523 /* Scene.swift */; };
 		EA772F822B87095400648523 /* SceneOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA772F812B87095400648523 /* SceneOne.swift */; };
@@ -41,10 +46,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA079F3F2BD32AD3000E32F6 /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
 		EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
 		EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibray.swift; sourceTree = "<group>"; };
 		EA1DB7202BC3A63D007C3AD7 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		EA1DB7222BC3A733007C3AD7 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		EA2964BE2BD1D4A100CE2353 /* LevelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelProtocol.swift; sourceTree = "<group>"; };
+		EA2964C02BD1D50F00CE2353 /* LevelOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
+		EA2964C22BD217FF00CE2353 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		EA2964C42BD2181100CE2353 /* GameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProtocol.swift; sourceTree = "<group>"; };
 		EA49CA472B8D12920067474C /* MathUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtilities.swift; sourceTree = "<group>"; };
 		EA772F7C2B8700D300648523 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		EA772F812B87095400648523 /* SceneOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneOne.swift; sourceTree = "<group>"; };
@@ -87,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA2964BD2BD1D47400CE2353 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				EA2964C02BD1D50F00CE2353 /* LevelOne.swift */,
+			);
+			path = Levels;
+			sourceTree = "<group>";
+		};
 		EA8207BC2BA159AF0096BE8A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +162,7 @@
 				EA8207DA2BA166840096BE8A /* VertexUniform.swift */,
 				EA8207DC2BA166A40096BE8A /* Vertex.swift */,
 				EA1DB7222BC3A733007C3AD7 /* Direction.swift */,
+				EA079F3F2BD32AD3000E32F6 /* NodeType.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -167,6 +186,7 @@
 		EAAD68A82B806B200062E0A3 /* SpaceInvaders */ = {
 			isa = PBXGroup;
 			children = (
+				EA2964BD2BD1D47400CE2353 /* Levels */,
 				EAF958C82BB67AE7005B6E42 /* Protocols */,
 				EAF958C32BB672DB005B6E42 /* Nodes */,
 				EA8207D92BA1666F0096BE8A /* Types */,
@@ -183,6 +203,7 @@
 				EAAD68B42B806B230062E0A3 /* Main.storyboard */,
 				EAAD68B72B806B230062E0A3 /* SpaceInvaders.entitlements */,
 				EA49CA472B8D12920067474C /* MathUtilities.swift */,
+				EA2964C22BD217FF00CE2353 /* Game.swift */,
 			);
 			path = SpaceInvaders;
 			sourceTree = "<group>";
@@ -202,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				EAF958C92BB67AF0005B6E42 /* NodeProtocol.swift */,
+				EA2964BE2BD1D4A100CE2353 /* LevelProtocol.swift */,
+				EA2964C42BD2181100CE2353 /* GameProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -234,7 +257,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					EAAD68A52B806B200062E0A3 = {
 						CreatedOnToolsVersion = 15.2;
@@ -281,10 +304,12 @@
 				EA8207D52BA15E290096BE8A /* FixedCamera.swift in Sources */,
 				EA1DB7212BC3A63D007C3AD7 /* Bullet.swift in Sources */,
 				EA1DB7232BC3A733007C3AD7 /* Direction.swift in Sources */,
+				EA079F402BD32AD3000E32F6 /* NodeType.swift in Sources */,
 				EA8207C62BA15BDF0096BE8A /* Math.swift in Sources */,
 				EA8207CC2BA15C580096BE8A /* simd_float4x4+Extension.swift in Sources */,
 				EAF958C72BB6795D005B6E42 /* Player.swift in Sources */,
 				EAF958CA2BB67AF0005B6E42 /* NodeProtocol.swift in Sources */,
+				EA2964C12BD1D50F00CE2353 /* LevelOne.swift in Sources */,
 				EA8207CE2BA15C730096BE8A /* Axis.swift in Sources */,
 				EAAD68AC2B806B200062E0A3 /* GameViewController.swift in Sources */,
 				EAF958CC2BB67C21005B6E42 /* Alien.swift in Sources */,
@@ -295,6 +320,7 @@
 				EA8207BE2BA15A3E0096BE8A /* MTKView+Extensions.swift in Sources */,
 				EA8207CA2BA15C310096BE8A /* Float+Extension.swift in Sources */,
 				EAAD68AE2B806B200062E0A3 /* Renderer.swift in Sources */,
+				EA2964C52BD2181100CE2353 /* GameProtocol.swift in Sources */,
 				EAAD68AA2B806B200062E0A3 /* AppDelegate.swift in Sources */,
 				EA8207DD2BA166A40096BE8A /* Vertex.swift in Sources */,
 				EA8207D32BA15CD50096BE8A /* CameraType.swift in Sources */,
@@ -302,9 +328,11 @@
 				EA1DB71D2BC39C34007C3AD7 /* TextureLibrary.swift in Sources */,
 				EA49CA482B8D12920067474C /* MathUtilities.swift in Sources */,
 				EA1DB71F2BC39E4A007C3AD7 /* ModelLibray.swift in Sources */,
+				EA2964BF2BD1D4A100CE2353 /* LevelProtocol.swift in Sources */,
 				EA8207C12BA15A9B0096BE8A /* KeyCodes.swift in Sources */,
 				EA8207C32BA15ABC0096BE8A /* Keyboard.swift in Sources */,
 				EA772F842B8709C800648523 /* Model.swift in Sources */,
+				EA2964C32BD217FF00CE2353 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +384,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -419,6 +448,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -449,6 +479,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5WR52D9YHX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -477,6 +508,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5WR52D9YHX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;

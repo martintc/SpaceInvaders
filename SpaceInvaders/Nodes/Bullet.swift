@@ -13,6 +13,8 @@ import MetalKit
 class Bullet: NodeProtocol {
     var name: String
     
+    var nodeType: NodeType = NodeType.Sprite
+    
     var position: simd_float3 = simd_float3(0, 0, 0)
     
     var scale: simd_float3 = simd_float3(0.1, 0.1, 0.1)
@@ -32,6 +34,12 @@ class Bullet: NodeProtocol {
     var color: simd_float3 = simd_float3(0, 0, 0)
     
     var direction: Direction
+    
+    var collidable: Bool = false
+    
+    var isProjectile: Bool = true
+    
+    var isDead: Bool = false
     
     required init(name: String) {
         self.name = name

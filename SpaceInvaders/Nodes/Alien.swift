@@ -14,6 +14,8 @@ class Alien: NodeProtocol {
     
     var children: [any NodeProtocol]
     
+    var nodeType: NodeType = NodeType.Sprite
+    
     var name: String
     
     var position: simd_float3 = simd_float3(0, 0, 0)
@@ -30,11 +32,18 @@ class Alien: NodeProtocol {
     
     var color: simd_float3 = simd_float3(0, 0, 0)
     
+    var collidable: Bool = true
+    
+    var isProjectile: Bool = false
+    
+    var isDead: Bool
+    
     required init(name: String) {
         self.name = name
         self.parentNode = nil
         self.children = [NodeProtocol]()
         self.color = simd_float3(0, 0, 0)
+        self.isDead = false
     }
     
     func update() {
