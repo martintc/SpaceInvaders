@@ -20,6 +20,9 @@ protocol NodeProtocol {
     var isVisible: Bool { get set }
     var primitiveType: MTLPrimitiveType { get set }
     var color: simd_float3 { get set }
+    var collidable: Bool { get set }
+    var isProjectile: Bool { get set }
+    var isDead: Bool { get set }
     
     init(name: String)
     
@@ -141,5 +144,9 @@ extension NodeProtocol {
                                             indexType: .uint16,
                                             indexBuffer: model.indexBuffer,
                                             indexBufferOffset: 0)
+    }
+    
+    mutating func changeDeadState(isDead: Bool) {
+        self.isDead = isDead
     }
 }

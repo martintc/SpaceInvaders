@@ -35,6 +35,12 @@ class Bullet: NodeProtocol {
     
     var direction: Direction
     
+    var collidable: Bool = false
+    
+    var isProjectile: Bool = true
+    
+    var isDead: Bool = false
+    
     required init(name: String) {
         self.name = name
         self.modelName = "quad"

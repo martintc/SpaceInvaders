@@ -21,7 +21,7 @@ extension LevelProtocol {
                 return gameObject
             }
             
-            var childObject = gameObject.nodeNamedRecursive(name)
+            let childObject = gameObject.nodeNamedRecursive(name)
             if childObject != nil {
                 return childObject
             }
@@ -40,8 +40,8 @@ extension LevelProtocol {
         for gameObject in gameObjects {
             gameObject.updateRecursive()
         }
-        
         checkBulletBounds()
+        checkCollisions()
     }
     
     private mutating func checkBulletBounds() {
@@ -52,6 +52,33 @@ extension LevelProtocol {
         if bullet.position.y > 10 {
             gameObjects.removeLast()
             print("Removed")
+        }
+    }
+    
+    private mutating func checkCollisions() {
+        var markForDead = [Int]()
+        
+        for (i, projectile) in gameObjects.enumerated() {
+            if projectile.isProjectile == false {
+                continue
+            }
+            
+            for (j, collidable) in gameObjects.enumerated() {
+                if collidable.collidable == false {
+                    continue
+                }
+                
+                if projectile.position.x < collidable.position.x + 0.25 && projectile.position.x > collidable.position.x - 0.25 {
+                    if projectile.position.y < collidable.position.y + 0.25 && projectile.position.y > collidable.position.y - 0.25 {
+                        markForDead.append(i)
+                        markForDead.append(j)
+                    }
+                }
+            }
+        }
+        
+        for i in markForDead {
+            gameObjects.remove(at: i)
         }
     }
     

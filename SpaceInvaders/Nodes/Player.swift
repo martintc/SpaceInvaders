@@ -34,11 +34,18 @@ class Player: NodeProtocol {
     
     var cannonActive = false
     
+    var collidable: Bool = false
+    
+    var isProjectile: Bool = false
+    
+    var isDead: Bool
+    
     required init(name: String) {
         self.name = name
         self.children = [NodeProtocol]()
         self.parentNode = nil
-        color = simd_float3(0, 0, 0)
+        self.color = simd_float3(0, 0, 0)
+        self.isDead = false
     }
     
     func update() {
