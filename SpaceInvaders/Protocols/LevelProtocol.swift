@@ -51,7 +51,10 @@ extension LevelProtocol {
         
         if bullet.position.y > 10 {
             gameObjects.removeLast()
+            
+            #if DEBUG
             print("Removed")
+            #endif
         }
     }
     
