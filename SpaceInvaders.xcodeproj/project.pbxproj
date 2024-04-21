@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EA079F402BD32AD3000E32F6 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA079F3F2BD32AD3000E32F6 /* NodeType.swift */; };
+		EA079F422BD4D520000E32F6 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA079F412BD4D520000E32F6 /* Box.swift */; };
 		EA1DB71D2BC39C34007C3AD7 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */; };
 		EA1DB71F2BC39E4A007C3AD7 /* ModelLibray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */; };
 		EA1DB7212BC3A63D007C3AD7 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB7202BC3A63D007C3AD7 /* Bullet.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		EA079F3F2BD32AD3000E32F6 /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
+		EA079F412BD4D520000E32F6 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
 		EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibray.swift; sourceTree = "<group>"; };
 		EA1DB7202BC3A63D007C3AD7 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				EA8207DC2BA166A40096BE8A /* Vertex.swift */,
 				EA1DB7222BC3A733007C3AD7 /* Direction.swift */,
 				EA079F3F2BD32AD3000E32F6 /* NodeType.swift */,
+				EA079F412BD4D520000E32F6 /* Box.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				EA1DB71D2BC39C34007C3AD7 /* TextureLibrary.swift in Sources */,
 				EA49CA482B8D12920067474C /* MathUtilities.swift in Sources */,
 				EA1DB71F2BC39E4A007C3AD7 /* ModelLibray.swift in Sources */,
+				EA079F422BD4D520000E32F6 /* Box.swift in Sources */,
 				EA2964BF2BD1D4A100CE2353 /* LevelProtocol.swift in Sources */,
 				EA8207C12BA15A9B0096BE8A /* KeyCodes.swift in Sources */,
 				EA8207C32BA15ABC0096BE8A /* Keyboard.swift in Sources */,
