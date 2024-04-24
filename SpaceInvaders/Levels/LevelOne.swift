@@ -13,12 +13,14 @@ class LevelOne: LevelProtocol {
     var gameObjects: [any NodeProtocol]
     var camera: Camera
     var alienMoveDirection: Direction
+    var gameOver: Bool
     
     init() {
         gameObjects = [any NodeProtocol]()
         camera = FixedCamera()
         self.camera.position = simd_float3(0, 5, 15);
         alienMoveDirection = .Right
+        gameOver = false
     }
     
     func load() {

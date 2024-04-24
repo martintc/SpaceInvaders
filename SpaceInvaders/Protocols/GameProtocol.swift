@@ -11,6 +11,7 @@ import MetalKit
 protocol GameProtocol {
     var levels: [any LevelProtocol] { get set }
     var currentLevel: Int { get set }
+    var prevTime: Double { get set }
     
     init()
     func load()

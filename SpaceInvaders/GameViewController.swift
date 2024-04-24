@@ -17,7 +17,8 @@ class GameViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TextureLibrary.shared.loadTextures()
+        TextureLibrary.shared.loadTexture(sourceName: "player", textureName: "player")
+        TextureLibrary.shared.loadTexture(sourceName: "yellow", textureName: "alien")
         ModelLibray.shared.loadModels()
 
         guard let mtkView = self.view as? MTKView else {

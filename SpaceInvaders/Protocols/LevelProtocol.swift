@@ -11,6 +11,7 @@ protocol LevelProtocol {
     var gameObjects: [NodeProtocol] { get set }
     var camera: Camera { get set }
     var alienMoveDirection: Direction { get set }
+    var gameOver: Bool { get set }
     
     func load()
 }
@@ -37,39 +38,42 @@ extension LevelProtocol {
         }
     }
     
-    mutating func update() {
+    mutating func update(dt: Double) {
         for gameObject in gameObjects {
             gameObject.updateRecursive()
         }
+        
         checkBulletBounds()
         checkCollisions()
+    
         
         let alienBox = getAlienBox()
-        let alienMoveVector = getAlienMoveVector(alienBox: alienBox)
+        let alienMoveVector = getAlienMoveVector(alienBox: alienBox, dt: dt)
         moveAliens(by: alienMoveVector)
         
+        checkPlayerCollisions()
     }
     
-    private mutating func getAlienMoveVector(alienBox: Box) -> simd_float3 {
+    private mutating func getAlienMoveVector(alienBox: Box, dt: Double) -> simd_float3 {
         var xAxis: Float = 0
         var yAxis: Float = 0
         
-        if alienBox.x_1 == 6 {
+        if alienBox.x_1 > 6 {
             alienMoveDirection = .Left
             yAxis = -0.5
         }
         
-        if alienBox.x_0 == -6.0 {
+        if alienBox.x_0 < -6.0 {
             alienMoveDirection = .Right
             yAxis = -0.5
         }
         
         if alienMoveDirection == .Right {
-            xAxis = 0.5
+            xAxis = 0.1 * Float(dt)
         }
         
         if alienMoveDirection == .Left {
-            xAxis = -0.5
+            xAxis = -0.1 * Float(dt)
         }
         
         return simd_float3(xAxis, yAxis, 0)
@@ -128,6 +132,26 @@ extension LevelProtocol {
         }
     }
     
+    /// Check is a player has a collision with an enemy bulelt or an enemy body
+    private mutating func checkPlayerCollisions() {
+        guard let player = findGameObject(name: "player") else {
+                fatalError("Error in checkPlayerCollisions: Could not find player")
+        }
+        
+        for alien in gameObjects.filter( { $0.name == "alien"} ) {
+            if player.position.x < alien.position.x + 0.25 && player.position.x > alien.position.x - 0.25 {
+                if player.position.y < alien.position.y + 0.25 && player.position.y > alien  .position.y - 0.25 {
+                    gameOver = true
+                    #if DEBUG
+                    print("Player dead")
+                    #endif
+                    
+                }
+            }
+        }
+    }
+    
+    // check if a player bullet collides with an enemy
     private mutating func checkCollisions() {
         var markForDead = [Int]()
         
