@@ -55,26 +55,11 @@ class LevelOne: LevelProtocol {
             }
         }
         
-        let s = TextSprite(name: "S")
-        s.position = simd_float3(0, 10, 0)
-        s.scale = universalScale
-        let p = TextSprite(name: "P")
-        p.position = simd_float3(0.25, 10, 0)
-        p.scale = universalScale
-//        let alienNode = Alien(name: "alien")
-//        alienNode.position = simd_float3(0, 5, 0)
-//        alienNode.scale = universalScale
-//        
-//        let anotherAlienNode = Alien(name: "alien")
-//        anotherAlienNode.position = simd_float3(0, 6, 0)
-//        anotherAlienNode.scale = universalScale
+        let spaceInvadersText = getRenderedText(text: "space invaders", startingPosition: simd_float3(-2, 10, 0), scale: universalScale, spacing: 0.35)
         
         gameObjects.append(playerNode)
-//        gameObjects.append(alienNode)
-//        gameObjects.append(anotherAlienNode)
         gameObjects.append(contentsOf: aliens)
+        gameObjects.append(spaceInvadersText)
         
-        gameObjects.append(s)
-        gameObjects.append(p)
     }
 }

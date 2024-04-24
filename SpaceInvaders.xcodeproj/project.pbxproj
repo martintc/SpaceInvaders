@@ -10,6 +10,7 @@
 		EA079F402BD32AD3000E32F6 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA079F3F2BD32AD3000E32F6 /* NodeType.swift */; };
 		EA079F422BD4D520000E32F6 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA079F412BD4D520000E32F6 /* Box.swift */; };
 		EA079F482BD8C04C000E32F6 /* TextSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA079F472BD8C04C000E32F6 /* TextSprite.swift */; };
+		EA079F4A2BD8C34C000E32F6 /* TextGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA079F492BD8C34C000E32F6 /* TextGenerator.swift */; };
 		EA1DB71D2BC39C34007C3AD7 /* TextureLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */; };
 		EA1DB71F2BC39E4A007C3AD7 /* ModelLibray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */; };
 		EA1DB7212BC3A63D007C3AD7 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DB7202BC3A63D007C3AD7 /* Bullet.swift */; };
@@ -51,6 +52,7 @@
 		EA079F3F2BD32AD3000E32F6 /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
 		EA079F412BD4D520000E32F6 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		EA079F472BD8C04C000E32F6 /* TextSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSprite.swift; sourceTree = "<group>"; };
+		EA079F492BD8C34C000E32F6 /* TextGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextGenerator.swift; sourceTree = "<group>"; };
 		EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLibrary.swift; sourceTree = "<group>"; };
 		EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibray.swift; sourceTree = "<group>"; };
 		EA1DB7202BC3A63D007C3AD7 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				EA8207D22BA15CD50096BE8A /* CameraType.swift */,
 				EA1DB71C2BC39C34007C3AD7 /* TextureLibrary.swift */,
 				EA1DB71E2BC39E4A007C3AD7 /* ModelLibray.swift */,
+				EA079F492BD8C34C000E32F6 /* TextGenerator.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				EA772F842B8709C800648523 /* Model.swift in Sources */,
 				EA2964C32BD217FF00CE2353 /* Game.swift in Sources */,
 				EA079F482BD8C04C000E32F6 /* TextSprite.swift in Sources */,
+				EA079F4A2BD8C34C000E32F6 /* TextGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
