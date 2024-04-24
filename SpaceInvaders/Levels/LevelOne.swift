@@ -55,6 +55,12 @@ class LevelOne: LevelProtocol {
             }
         }
         
+        let s = TextSprite(name: "S")
+        s.position = simd_float3(0, 10, 0)
+        s.scale = universalScale
+        let p = TextSprite(name: "P")
+        p.position = simd_float3(0.25, 10, 0)
+        p.scale = universalScale
 //        let alienNode = Alien(name: "alien")
 //        alienNode.position = simd_float3(0, 5, 0)
 //        alienNode.scale = universalScale
@@ -67,5 +73,8 @@ class LevelOne: LevelProtocol {
 //        gameObjects.append(alienNode)
 //        gameObjects.append(anotherAlienNode)
         gameObjects.append(contentsOf: aliens)
+        
+        gameObjects.append(s)
+        gameObjects.append(p)
     }
 }

@@ -45,6 +45,59 @@ class TextureLibrary {
         return self.library[name]
     }
     
+    func loadSpriteSheet(textureName: String, 
+                         spriteNames: [String],
+                         rows: Int,
+                         columns: Int) {
+        // check we have enough sprite name for total images
+        if (spriteNames.count != rows * columns) {
+            fatalError("Error in loadSpriteSheet: not enough sprite names for how many sprite we want to create")
+        }
+        
+        // laod CGImage
+        guard let nsImage = NSImage(named: textureName) else {
+            fatalError("Error in loadSpriteSheet: failed to load imge \(textureName)")
+        }
+        
+        guard let cgImage = nsImage.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+            fatalError("Error in loadSpriteSheet: failed to convert NSImage to CGImage")
+        }
+        
+        let imageWidth = cgImage.width
+        let imageHeight = cgImage.height
+        
+        let spriteWidth = imageWidth / columns
+        let spriteHeight = imageHeight / rows
+        
+        var i: Int = 0
+        
+        for row in 0..<rows {
+            let y = row * spriteHeight
+            for column in 0..<columns {
+                let x = column * spriteWidth
+                let cgRect = CGRect(x: x, y: y, width: spriteWidth, height: spriteHeight)
+                
+                guard let spriteImage = cgImage.cropping(to: cgRect) else {
+                    fatalError("Error in loadSpriteSheet: issue cropping image")
+                }
+                
+                do {
+                    let texture = try textureLoader.newTexture(cgImage: spriteImage,
+                                                               options: [MTKTextureLoader.Option.textureStorageMode : 0])
+                    
+                    let spriteName = spriteNames[i]
+                    self.storeTexture(name: spriteName, texture: texture)
+                    
+                } catch {
+                    fatalError("Error in loadSpriteSheet: \(error)")
+                }
+                
+                i += 1
+            }
+        }
+        
+    }
+    
 //    func loadSpriteSheet(textureName: String,
 //                         spriteNames: [String],
 //                         rows: Int,

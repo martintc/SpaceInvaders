@@ -17,8 +17,12 @@ class GameViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let textSpriteNames = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
+        "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+        
         TextureLibrary.shared.loadTexture(sourceName: "player", textureName: "player")
         TextureLibrary.shared.loadTexture(sourceName: "yellow", textureName: "alien")
+        TextureLibrary.shared.loadSpriteSheet(textureName: "bloxxit_8x8", spriteNames: textSpriteNames, rows: 1, columns: 26)
         ModelLibray.shared.loadModels()
 
         guard let mtkView = self.view as? MTKView else {
