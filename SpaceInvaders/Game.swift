@@ -27,6 +27,10 @@ class Game: GameProtocol {
     }
     
     func update() {
+        if levels[currentLevel].gameOver {
+            return
+        }
+        
         let dt = calculateDeltaTime()
         
         #if DEBUG
@@ -37,8 +41,13 @@ class Game: GameProtocol {
         levels[currentLevel].update(dt: dt)
         
         if levels[currentLevel].gameOver {
-            print ("GAME OVER")
+            handleGameOver()
         }
+    }
+    
+    private func handleGameOver() {
+        let gameOverText = getRenderedText(text: "game over", startingPosition: simd_float3(-5, 5, 1), scale: simd_float3(1, 1, 1), spacing: 1)
+        levels[currentLevel].gameObjects.append(gameOverText)
     }
     
     private func calculateDeltaTime() -> Double {
