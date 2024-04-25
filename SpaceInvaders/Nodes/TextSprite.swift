@@ -38,6 +38,10 @@ class TextSprite: NodeProtocol {
     
     var isDead: Bool = false
     
+    var mask: Int8 = 0
+    
+    var layer: Int8 = 0
+    
     required init(name: String) {
         self.name = name
         self.textureName = name

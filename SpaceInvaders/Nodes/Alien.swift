@@ -38,12 +38,18 @@ class Alien: NodeProtocol {
     
     var isDead: Bool
     
+    var layer: Int8
+    
+    var mask: Int8
+    
     required init(name: String) {
         self.name = name
         self.parentNode = nil
         self.children = [NodeProtocol]()
         self.color = simd_float3(0, 0, 0)
         self.isDead = false
+        self.mask = 0
+        self.layer = 2
     }
     
     func update() {

@@ -9,7 +9,7 @@ import Foundation
 import simd
 
 func getRenderedText(text: String, startingPosition: simd_float3, scale: simd_float3, spacing: Float) -> GenericNode {
-    var text = text.uppercased()
+    let text = text.uppercased()
     
     var genericNode = GenericNode(name: "text")
     

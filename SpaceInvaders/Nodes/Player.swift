@@ -34,11 +34,15 @@ class Player: NodeProtocol {
     
     var cannonActive = false
     
-    var collidable: Bool = false
+    var collidable: Bool = true
     
     var isProjectile: Bool = false
     
     var isDead: Bool
+    
+    var layer: Int8
+    
+    var mask: Int8
     
     required init(name: String) {
         self.name = name
@@ -46,6 +50,8 @@ class Player: NodeProtocol {
         self.parentNode = nil
         self.color = simd_float3(0, 0, 0)
         self.isDead = false
+        self.layer = 1
+        self.mask = 0 
     }
     
     func update() {

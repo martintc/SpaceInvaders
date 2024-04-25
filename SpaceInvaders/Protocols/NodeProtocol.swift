@@ -23,6 +23,8 @@ protocol NodeProtocol {
     var collidable: Bool { get set }
     var isProjectile: Bool { get set }
     var isDead: Bool { get set }
+    var layer: Int8 { get set } // which 'layer' a node rests on
+    var mask: Int8 { get set } // which layera  node can interact with
     
     init(name: String)
     

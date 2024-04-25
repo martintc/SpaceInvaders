@@ -41,6 +41,10 @@ class Bullet: NodeProtocol {
     
     var isDead: Bool = false
     
+    var layer: Int8 = 0
+    
+    var mask: Int8 = 0
+    
     required init(name: String) {
         self.name = name
         self.modelName = "quad"

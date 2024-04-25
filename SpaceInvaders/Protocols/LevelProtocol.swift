@@ -43,15 +43,41 @@ extension LevelProtocol {
             gameObject.updateRecursive()
         }
         
-        checkBulletBounds()
-        checkCollisions()
-    
-        
         let alienBox = getAlienBox()
         let alienMoveVector = getAlienMoveVector(alienBox: alienBox, dt: dt)
         moveAliens(by: alienMoveVector)
         
         checkPlayerCollisions()
+        checkBulletBounds()
+        checkCollisions()
+        
+        alienShoot()
+    }
+    
+    private mutating func alienShoot() {
+        let number = Int.random(in: 0...100)
+        
+        if number < 95 {
+            return
+        }
+        
+        // pick and alien
+        guard let alien = self.findGameObject(name: "alien") else {
+            return
+        }
+        
+        var bulletPosition = alien.position
+        bulletPosition.y -= 0.25
+        
+        // create a bullet node
+        let alienBullet = Bullet(name: "bullet")
+        alienBullet.layer = 2
+        alienBullet.mask = 1
+        alienBullet.direction = .Down
+        alienBullet.position = bulletPosition
+        
+        // add bullet node to gameObjects
+        self.gameObjects.append(alienBullet)
     }
     
     private mutating func getAlienMoveVector(alienBox: Box, dt: Double) -> simd_float3 {
@@ -119,17 +145,26 @@ extension LevelProtocol {
     }
     
     private mutating func checkBulletBounds() {
-        guard let bullet = self.findGameObject(name: "playerBullet") else {
-            return
+        var removalList = [Int]()
+        
+        for (i, object) in gameObjects.enumerated() {
+            if object.isProjectile == false {
+                continue
+            }
+            
+            if object.position.y > 10 || object.position.y < -1 {
+                removalList.append(i)
+            }
         }
         
-        if bullet.position.y > 10 {
-            gameObjects.removeLast()
-            
-            #if DEBUG
-            print("Removed")
-            #endif
+        #if DEBUG
+        print("Removing this many bullets: \(removalList.count)")
+        #endif
+        
+        for i in removalList {
+            gameObjects.remove(at: i)
         }
+        
     }
     
     /// Check is a player has a collision with an enemy bulelt or an enemy body
@@ -165,14 +200,21 @@ extension LevelProtocol {
                     continue
                 }
                 
-                if projectile.position.x < collidable.position.x + 0.25 && projectile.position.x > collidable.position.x - 0.25 {
-                    if projectile.position.y < collidable.position.y + 0.25 && projectile.position.y > collidable.position.y - 0.25 {
-                        markForDead.append(i)
-                        markForDead.append(j)
-                        
-                        #if DEBUG
-                        print("Bullet made a hit!")
-                        #endif
+                if projectile.mask == collidable.layer {
+                    if projectile.position.x < collidable.position.x + 0.25 && projectile.position.x > collidable.position.x - 0.25 {
+                        if projectile.position.y < collidable.position.y + 0.25 && projectile.position.y > collidable.position.y - 0.25 {
+                            markForDead.append(i)
+                            markForDead.append(j)
+                            
+                            if collidable.name == "player" {
+                                self.gameOver = true
+                                return
+                            }
+                            
+#if DEBUG
+                            print("Bullet made a hit!")
+#endif
+                        }
                     }
                 }
             }

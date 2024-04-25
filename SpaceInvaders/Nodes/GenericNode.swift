@@ -38,11 +38,17 @@ class GenericNode: NodeProtocol {
     
     var isDead: Bool
     
+    var layer: Int8
+    
+    var mask: Int8
+    
     required init(name: String) {
         self.name = name
         self.parentNode = nil
         self.children = [NodeProtocol]()
         self.isDead = false
+        self.layer = 0
+        self.mask = 0
     }
     
     func update() {

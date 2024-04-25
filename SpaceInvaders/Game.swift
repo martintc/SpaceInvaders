@@ -78,6 +78,8 @@ class Game: GameProtocol {
             let bullet = Bullet(name: "playerBullet", direction: .Up)
             bullet.position.x = playerNode.position.x
             bullet.position.y = playerNode.position.y + 0.25
+            bullet.layer = 1
+            bullet.mask = 2
             levels[currentLevel].addGameObject(bullet)
         }
         
