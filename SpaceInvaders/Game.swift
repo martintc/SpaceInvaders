@@ -31,6 +31,10 @@ class Game: GameProtocol {
             return
         }
         
+        if levels[currentLevel].won {
+            return
+        }
+        
         let dt = calculateDeltaTime()
         
         #if DEBUG
@@ -43,6 +47,15 @@ class Game: GameProtocol {
         if levels[currentLevel].gameOver {
             handleGameOver()
         }
+        
+        if levels[currentLevel].won {
+            handleGameWon()
+        }
+    }
+    
+    private func handleGameWon() {
+        let wonText = getRenderedText(text: "you win", startingPosition: simd_float3(-2, 5, 1), scale: simd_float3(1, 1, 1), spacing: 1)
+        levels[currentLevel].gameObjects.append(wonText)
     }
     
     private func handleGameOver() {

@@ -14,6 +14,7 @@ class LevelOne: LevelProtocol {
     var camera: Camera
     var alienMoveDirection: Direction
     var gameOver: Bool
+    var won: Bool
     
     init() {
         gameObjects = [any NodeProtocol]()
@@ -21,6 +22,7 @@ class LevelOne: LevelProtocol {
         self.camera.position = simd_float3(0, 5, 15);
         alienMoveDirection = .Right
         gameOver = false
+        won = false
     }
     
     func load() {

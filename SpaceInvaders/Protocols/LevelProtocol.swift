@@ -12,6 +12,7 @@ protocol LevelProtocol {
     var camera: Camera { get set }
     var alienMoveDirection: Direction { get set }
     var gameOver: Bool { get set }
+    var won: Bool { get set }
     
     func load()
 }
@@ -39,6 +40,12 @@ extension LevelProtocol {
     }
     
     mutating func update(dt: Double) {
+        checkWinCondition()
+        
+        if won {
+            return
+        }
+        
         for gameObject in gameObjects {
             gameObject.updateRecursive()
         }
@@ -54,6 +61,18 @@ extension LevelProtocol {
         alienShoot()
     }
     
+    private mutating func checkWinCondition() {
+        won = gameObjects.filter({ $0.name == "alien" }).count == 0
+    }
+    
+    private func chooseShootingAlien() -> simd_float3 {
+        let aliens = gameObjects.filter({ $0.name == "alien" })
+        
+        let rand = Int.random(in: 0..<aliens.count)
+        
+        return aliens[rand].position
+    }
+    
     private mutating func alienShoot() {
         let number = Int.random(in: 0...100)
         
@@ -62,11 +81,9 @@ extension LevelProtocol {
         }
         
         // pick and alien
-        guard let alien = self.findGameObject(name: "alien") else {
-            return
-        }
+        let alienPosition = chooseShootingAlien()
         
-        var bulletPosition = alien.position
+        var bulletPosition = alienPosition
         bulletPosition.y -= 0.25
         
         // create a bullet node

@@ -12,7 +12,7 @@ import simd
 class TextSprite: NodeProtocol {
     var name: String
     
-    var nodeType: NodeType = .Sprite
+    var nodeType: NodeType = .Text
     
     var position: simd_float3 = simd_float3(0, 0, 0)
     

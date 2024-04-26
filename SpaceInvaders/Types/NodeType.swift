@@ -8,5 +8,5 @@
 import Foundation
 
 enum NodeType {
-    case None, Sprite, CollisionBody
+    case None, Sprite, CollisionBody, Text
 }
