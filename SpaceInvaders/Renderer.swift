@@ -40,11 +40,6 @@ class Renderer: NSObject, MTKViewDelegate {
         
         self.renderPipelineState = Renderer.buildRenderPipelineState(self.view, device: self.device, vertexDescriptor: self.vertexDescriptor)
         
-//        self.scene = SceneOne(device: self.device)
-//        
-//        self.level = LevelOne()
-//        self.level.load()
-        
         self.game = Game()
         game.load()
         
@@ -89,8 +84,6 @@ class Renderer: NSObject, MTKViewDelegate {
     }
     
     func update() {
-//        self.scene.update()
-//        self.level.update()
         self.game.update()
     }
 
@@ -115,11 +108,7 @@ class Renderer: NSObject, MTKViewDelegate {
         
         renderEncoder.setRenderPipelineState(self.renderPipelineState)
         
-//        self.scene.render(renderCommandEncoder: renderEncoder, camera: self.scene.camera)
-        
-//        self.level.render(renderEncoder: renderEncoder)
         self.game.render(encoder: renderEncoder)
-        
         
         renderEncoder.endEncoding()
         commandBuffer.present(drawable)
