@@ -15,6 +15,7 @@ class LevelOne: LevelProtocol {
     var alienMoveDirection: Direction
     var gameOver: Bool
     var won: Bool
+    var prevShootTimer: Double
     
     init() {
         gameObjects = [any NodeProtocol]()
@@ -23,6 +24,7 @@ class LevelOne: LevelProtocol {
         alienMoveDirection = .Right
         gameOver = false
         won = false
+        prevShootTimer = 0
     }
     
     func load() {

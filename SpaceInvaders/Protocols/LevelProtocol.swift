@@ -14,6 +14,8 @@ protocol LevelProtocol {
     var gameOver: Bool { get set }
     var won: Bool { get set }
     
+    var prevShootTimer: Double { get set }
+    
     func load()
 }
 
@@ -73,10 +75,29 @@ extension LevelProtocol {
         return aliens[rand].position
     }
     
-    private mutating func alienShoot() {
-        let number = Int.random(in: 0...100)
+    private mutating func alienShootTimer() -> Bool {
+        if prevShootTimer == 0 {
+            prevShootTimer = Date.now.timeIntervalSince1970
+            return false
+        }
         
-        if number < 95 {
+        let currentTime = Date.now.timeIntervalSince1970
+        
+        let dt = currentTime - prevShootTimer
+        
+        let time = dt
+        
+        if time < 1 {
+            return false
+        }
+        
+        prevShootTimer = currentTime
+        return true
+        
+    }
+    
+    private mutating func alienShoot() {
+        if !alienShootTimer() {
             return
         }
         
